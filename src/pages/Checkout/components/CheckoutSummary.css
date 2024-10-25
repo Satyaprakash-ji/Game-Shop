@@ -1,0 +1,72 @@
+.checkout-page-summary {
+    padding: 1rem;
+    margin: 10px;
+    margin-top: 0;
+    border-radius: 8px;
+  }
+  
+  .checkout-page-summary-heading {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+  
+  .checkout-page-summary-heading:first-of-type {
+    margin-top: 0;
+  }
+  
+  .checkout-page-summary-list {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .checkout-summary-div hr{
+    border: 1px solid #8d8d8d97;
+  }
+  
+  .checkout-page-summary-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  
+  .checkout-page-summary-total-amount {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .checkout-page-summary-savings {
+    color: #388e3c;;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-style: italic;
+  }
+  
+  .checkout-page-summary-place-order-btn {
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FF7200;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+  
+  .checkout-page-summary-place-order-btn:hover {
+    background-color: #FF6100;
+    transition: ease-in .1s;
+  }
+  
+  .checkout-page-order-details-subheading {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .checkout-page-summary-list .checkout-page-order-details-book-title {
+    width: 60%;
+    font-weight: 400;
+  }
+  

@@ -1,0 +1,11 @@
+.ctegory-container{
+    padding: 60px 140px;
+    background-color: #1A1A1A;
+    color: white;
+}
+
+.categories{
+    display: flex;
+    gap: 25px;
+    margin-top: 35px;
+}

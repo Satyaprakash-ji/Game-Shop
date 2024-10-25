@@ -9,10 +9,23 @@ import { formatDate } from "../utils/authUtils";
 export const users = [
   {
     _id: uuid(),
-    firstName: "Adarsh",
-    lastName: "Balika",
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
+    firstName: "Satya",
+    lastName: "Prakash",
+    email: "sprakash9120@gmail.com",
+    password: "satya123",
+    userAddresses: [
+      {
+        id: uuid(),
+        firstName: "Satya",
+        lastName: "Prakash",
+        addressLine1: "789 Oak St",
+        addressLine2: "Suite 10",
+        city: "Mumbai",
+        state: "Maharashtra",
+        zipCode: "400001",
+        country: "India",
+      },
+    ],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },

@@ -1,0 +1,84 @@
+.product-card{
+    width: 300px;
+    height: 500px;
+    text-align: center;
+}
+
+.product-image{
+    position: relative;
+}
+
+.product-image>img{
+    width: 300px;
+    height: 400px;
+}
+
+.wishlist-and-cart-box{
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 45px;
+    background-color: #0F0F0F;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .3s ease;
+}
+
+.product-card:hover .wishlist-and-cart-box{
+    bottom: 5%;
+    opacity: 1;
+}
+
+.cart-icon, .quick-view, .wishlist{
+    width: 30%;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+}
+
+.cart-icon-fill{
+    width: 30%;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: orangered;
+}
+
+.wishlist-fill{
+    width: 30%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: rgb(255, 52, 86);
+}
+
+.cart-icon:hover, .wishlist:hover, .quick-view:hover{
+    color: #8D8D8D;
+    cursor: pointer;
+}
+
+.product-card>h3{
+    font-size: 14px;
+    font-weight: 500;
+    margin: 5px 0;
+}
+
+.product-card>p{
+    font-size: 14px;
+    font-weight: 600;
+    color: #FF6701;
+    margin: 5px 0;
+}
+
+.product-card>p>span{
+    text-decoration: line-through;
+    color: #8D8D8D;
+    font-size: 12.6px;
+}

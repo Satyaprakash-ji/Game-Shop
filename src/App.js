@@ -1,43 +1,46 @@
-import "./App.css";
-import logo from "./logo.png";
+import { Routes, Route } from "react-router-dom";
+import Mockman from "mockman-js"
+import Home from "./pages/Home/Home";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
+import Footer from "./components/Footer/Footer";
+import Category from "./pages/Category/Category";
+import ProductListings from "./pages/ProductListings/ProductListings";
+import Cart from "./pages/Cart/Cart";
+import Wishlist from "./pages/Wishlist/Wishlist";
+import Checkout from "./pages/Checkout/Checkout";
+import Register from "./pages/Auth/Register/Register";
+import Login from "./pages/Auth/Login/Login";
+import Profile from "./pages/Auth/Profile/Profile";
+import UserAddress from "./pages/UserAddress/UserAddress";
+import Contact from "./pages/Contact/Contact";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
+const App = () => {
+
+  return(
+    <div>
+      <NavigationBar />
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/products" element={<ProductListings />}/>
+        <Route path="/products/:productId" element={<ProductDetails />}/>
+        <Route path="/category" element={<Category />}/>
+        <Route path="/cart" element={<Cart />}/>
+        <Route path="/wishlist" element={<Wishlist />}/>
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/contact" element={<Contact />}/>
+
+
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/address" element={<UserAddress />}/>
+
+        <Route path="/mockman" element={<Mockman />}/>
+      </Routes>
+      <Footer />
     </div>
-  );
+  )
 }
 
 export default App;
