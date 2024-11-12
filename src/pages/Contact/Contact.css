@@ -25,6 +25,15 @@
   .contactPage .heading h1 {
     margin-top: 0;
   }
+
+  .contactPage .messageUsSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    align-content: center;
+    padding: 50px;
+    gap:5rem;
+  }
   
   .contactPage .textContent p {
     display: flex;

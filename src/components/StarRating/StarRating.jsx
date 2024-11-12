@@ -6,7 +6,7 @@ const StarRating = ({ rating }) => {
 
   return (
     <div className="star-rating">
-      {Array.from({ length: totalStars }, (index) => {
+      {Array.from({ length: totalStars }, (_,index) => {
         const isFullStar = index < Math.floor(rating);
         const isHalfStar = index === Math.floor(rating) && rating % 1 !== 0;
         return (
