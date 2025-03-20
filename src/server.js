@@ -56,6 +56,10 @@ export function makeServer({ environment = "development" } = {}) {
     },
 
     routes() {
+
+      // Passthrough Razorpay requests
+      this.passthrough('https://lumberjack.razorpay.com/**');
+      
       this.namespace = "api";
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));

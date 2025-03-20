@@ -26,6 +26,9 @@ const Profile = () => {
               <button className="btn-primary" onClick={() => navigate("address")}>
                 Manage Addresses
               </button>
+              <button className="btn-primary" onClick={() => navigate("orderHistory")}>
+                Order History
+              </button>
               <button className="btn-secondary" onClick={() => logOut()} >
                 Log Out
               </button>

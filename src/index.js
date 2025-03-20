@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "react-toastify/dist/ReactToastify.css";
 import "react-tooltip/dist/react-tooltip.css";
 import App from "./App";
 import { makeServer } from "./server";
@@ -11,6 +12,8 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { OrderProvider } from "./contexts/OrderContext";
 import { CartProvider } from "./contexts/CartContext";
 import { WishlistProvider } from "./contexts/WishlistContext";
+// import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 export { ProductContext };
 

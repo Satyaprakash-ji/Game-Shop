@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer, Slide } from "react-toastify";
+
 import Mockman from "mockman-js"
 import Home from "./pages/Home/Home";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
@@ -12,8 +14,9 @@ import Checkout from "./pages/Checkout/Checkout";
 import Register from "./pages/Auth/Register/Register";
 import Login from "./pages/Auth/Login/Login";
 import Profile from "./pages/Auth/Profile/Profile";
-import UserAddress from "./pages/UserAddress/UserAddress";
+import UserAddress from "./pages/Profile/UserAddress";
 import Contact from "./pages/Contact/Contact";
+import OrderHistory from "./pages/Profile/OrderHistory";
 
 const App = () => {
 
@@ -35,10 +38,25 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/address" element={<UserAddress />}/>
+        <Route path="/profile/orderHistory" element={<OrderHistory />}/>
 
         <Route path="/mockman" element={<Mockman />}/>
       </Routes>
       <Footer />
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Slide}
+        theme="light"
+      />
     </div>
   )
 }

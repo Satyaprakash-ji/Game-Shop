@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const initialWishlist = {
     wishlistData: []
 }
@@ -11,7 +13,7 @@ export const wishlistReducer = (state, {type, payload}) =>{
         case "DELETE_FROM_WISHLIST":
             return { ...state, wishlistData: payload }
         default:
-            console.log("somthing is wrong in wishlist reducer function");
+            toast.warning("somthing is wrong in wishlist reducer function");
             break;
     }
 }

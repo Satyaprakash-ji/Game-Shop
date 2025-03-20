@@ -29,14 +29,14 @@ export const FilterProvider = ({ children }) => {
 
   const searchFilteredProduct =
     filterState?.filters?.search?.length > 0
-      ? products?.productsData?.products?.filter((game) =>
+      && products?.productsData?.products?.filter((game) =>
           game.title
             .toLowerCase()
             .includes(filterState?.filters?.search?.toLowerCase())
         )
-      : savedCategoryData;
+      // : savedCategoryData;
 
-  const priceRangeFilteredProduct = searchFilteredProduct?.filter((game) => game?.price <= filterState?.filters?.priceSlider );
+  const priceRangeFilteredProduct = savedCategoryData?.filter((game) => game?.price <= filterState?.filters?.priceSlider );
 
   const genreFilteredProduct = filterState?.filters?.selectedGenres?.length > 0 ? priceRangeFilteredProduct?.filter((game) => game?.Genre?.includes(filterState?.filters?.selectedGenres) ) : priceRangeFilteredProduct;
 
@@ -66,7 +66,7 @@ export const FilterProvider = ({ children }) => {
 
   return (
     <FilterContext.Provider
-      value={{ minRangeValue, maxRangeValue, filters: filterState.filters, sortByPriceFilteredProduct }}
+      value={{ minRangeValue, maxRangeValue, filters: filterState.filters, sortByPriceFilteredProduct, searchFilteredProduct}}
     >
       <FilterDispatchContext.Provider value={{ filterDispatch }}>
         {children}

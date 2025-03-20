@@ -32,7 +32,7 @@ const ProductDetails = () => {
         getProductDetails();
     }, []);
 
-    return(
+    return currentProduct ? (
         <div className="product-details-container">
             <div className="product-detail-image">
                 <img src={currentProduct?.img} alt="" />
@@ -43,16 +43,11 @@ const ProductDetails = () => {
                 <div className="rating-details"><StarRating rating={currentProduct?.rating}/> <span>({currentProduct?.rating} rating)</span> </div>
                 <p className="product-description">{currentProduct?.aboutGame}</p>
                 <div className="quantity-and-button">
-                    <div className="quantity">
-                        <div className="minus">-</div>
-                        <div className="number">{currentProduct?.qty ? currentProduct?.qty : "1"}</div>
-                        <div className="plus">+</div>
-                    </div>
                     <button className="add-button" onClick={() => addToBasketHandler( currentProduct, loginData.token)}>Add to Basket</button>
                 </div>
                 <div className="social-media-icons">
-                    <NavLink to="https://www.facebook.com/Tanishq/"><span className="icons"><FaFacebook/></span></NavLink>
-                    <NavLink to="https://twitter.com/TheIndianGirl56"><span className="icons"><FaTwitter/></span></NavLink>
+                    <NavLink to="https://www.facebook.com"><span className="icons"><FaFacebook/></span></NavLink>
+                    <NavLink to="https://twitter.com/Satyaprakash"><span className="icons"><FaTwitter/></span></NavLink>
                     <NavLink to="https://github.com/Satyaprakash-ji"><span className="icons"><FaGithub/></span></NavLink>
                     <NavLink to="https://www.linkedin.com/in/satyaprakash-dev/"><span className="icons"><FaLinkedin/></span></NavLink>
                 </div>
@@ -62,7 +57,9 @@ const ProductDetails = () => {
                 </div>
             </div>
         </div>
-    )
+    ): (        <div style={{width: "100%", height: "71vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
+        <img style={{width: "100px", height: "full"}} src="\assets\Loading.gif" alt="" />
+    </div>)
 }
 
 export default ProductDetails;

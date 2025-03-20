@@ -1,7 +1,8 @@
 import { createContext, useContext, useReducer } from "react";
 import { AuthContext } from "./AuthContext";
 import { CartReducer, initialCart } from "../reducers/cartReducer";
-import {useNavigate, useLocation} from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { toast } from "react-toastify";
 import axios from "axios";
 
 export const CartContext = createContext();
@@ -51,31 +52,34 @@ export const CartProvider = ({children}) => {
           } = response;
           if (status === 201) {
             cartDispatch({ type: "ADD_TO_BASKET", payload: cart });
-            console.log("Item Added to Cart!!");
+            toast.success(`"${product.title}" successfully added to Basket`);
           }
         } catch (error) {
           navigate('/login', {state:{from :location}})
+          toast.error(`Failed to Add "${product.title}" to Basket`);
         }
     };
 
-    const deleteFromBasket = async (productId, encodedToken, title,showNotification) => {
-        try {
-          const response = await axios.delete(`/api/user/cart/${productId}`, {
-            headers: {
-              authorization: encodedToken,
-            },
-          });;
-          const {
-            status,
-            data: { cart },
-          } = response;
-    
-          if (status === 200) {
-            cartDispatch({ type: "DELETE_FROM_BASKET", payload: cart });
-          }
-        } catch (error) {
-        console.error(error)
+    const deleteFromBasket = async (productId, encodedToken) => {
+      try {
+        const response = await axios.delete(`/api/user/cart/${productId}`, {
+          headers: {
+            authorization: encodedToken,
+          },
+        });;
+        const {
+          status,
+          data: { cart },
+        } = response;
+  
+        if (status === 200) {
+          cartDispatch({ type: "DELETE_FROM_BASKET", payload: cart });
+          toast.success(`Successfully removed an item from the Basket`);
         }
+      } catch (error) {
+      console.error(error)
+      toast.error(`Failed to remove an item from the Basket`);
+      }
     };
 
     const changeQuantity = async (productId, encodedToken, type) => {
@@ -90,7 +94,7 @@ export const CartProvider = ({children}) => {
               authorization: encodedToken,
             },
           }
-        );;
+        );
         const {
           status,
           data: { cart },
@@ -101,7 +105,7 @@ export const CartProvider = ({children}) => {
           else cartDispatch({ type: "DECREASE_QUANTITY", payload: cart });
         }
       } catch (error) {
-        console.log(error);
+        toast.error(`Failed to update quantity of an item in the Basket`);
       }
     };
 

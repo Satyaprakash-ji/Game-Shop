@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useState } from "react";
 import { v4 as uuid } from "uuid";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
@@ -31,7 +32,7 @@ export const AuthProvider = ({children}) => {
         isError: null,
       });
 
-      console.log("Logged In!");
+      toast.success("Logged In!");
 
       localStorage.setItem("token", JSON.stringify({ token: encodedToken }));
       localStorage.setItem("user", JSON.stringify({ user: foundUser }));
@@ -42,7 +43,7 @@ export const AuthProvider = ({children}) => {
         isLoggedIn: false,
       });
 
-      console.log(`${err.response.data.errors[0]}`);
+      toast.error(`${err.response.data.errors[0]}`);
     }
   }
 
@@ -63,19 +64,18 @@ export const AuthProvider = ({children}) => {
         isError: null,
       });
 
-      console.log("Successfully Signed Up!");
+      toast.success("Successfully Signed Up!");
 
       localStorage.setItem("token", JSON.stringify({ token: encodedToken }));
       localStorage.setItem("user", JSON.stringify({ user: createdUser }));
     } catch (err) {
-      console.log(err);
       setLoginData({
         ...loginData,
         isError: err.response.data.errors[0],
         isLoggedIn: false,
       });
 
-      console.log(`${err.response.data.errors[0]}`);
+      toast.error(`${err.response.data.errors[0]}`);
     }
   }
 
@@ -90,7 +90,7 @@ export const AuthProvider = ({children}) => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    console.log("Log Out!");
+    toast.success("Log Out!");
   }
 
   const handleAddAddress = (addressToAdd) => {
@@ -106,7 +106,7 @@ export const AuthProvider = ({children}) => {
       },
     });
 
-    console.log("Address Added!");
+    toast.success("Address Added!");
 
     localStorage.setItem(
       "user",
@@ -125,7 +125,7 @@ export const AuthProvider = ({children}) => {
       },
     });
 
-    console.log("Address Updated!");
+    toast.success("Address Updated!");
 
     localStorage.setItem(
       "user",
@@ -148,7 +148,7 @@ export const AuthProvider = ({children}) => {
       },
     });
 
-    console.log("Address Deleted!");
+    toast.success("Address Deleted!");
 
     localStorage.setItem(
       "user",

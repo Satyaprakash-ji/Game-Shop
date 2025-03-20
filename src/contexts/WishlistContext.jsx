@@ -3,6 +3,7 @@ import { initialWishlist, wishlistReducer } from "../reducers/wishlistReducer"
 import axios from "axios"
 import { AuthContext } from "./AuthContext"
 import { useLocation, useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"
 
 export const WishlistContext = createContext()
 export const WishlistDispatchContext = createContext()
@@ -28,7 +29,6 @@ export const WishlistProvider = ({children}) => {
             wishlistDispatch({ type: "ALL_WISHLIST", payload: wishlist });
           }
         } catch (error) {
-          console.log(error);
         } 
     };
 
@@ -50,12 +50,12 @@ export const WishlistProvider = ({children}) => {
     
             if (status === 201) {
               wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: wishlist });
-                console.log("Added to wishlist!!")
+              toast.success(`"${product.title}" successfully added to Wishlist`);
             }
           }
         } catch (error) {
-          console.log(error);
           navigate('/login', {state:{from :location}})
+          toast.error(`Failed to Add "${product.title}" to Wishlist`);
         } 
     };
 
@@ -73,10 +73,10 @@ export const WishlistProvider = ({children}) => {
     
           if (status === 200) {
             wishlistDispatch({ type: "DELETE_FROM_WISHLIST", payload: wishlist });
-            console.log("remove from wishlist!!")
+            toast.success(`Successfully removed an item from the Wishlist`);
           }
         } catch (error) {
-          console.log(error);
+          toast.error(`Failed to remove an item from the Wishlist`);
         }
     };
 

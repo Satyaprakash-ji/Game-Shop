@@ -4,6 +4,7 @@ function AddressForm({ onSubmit, address }) {
   const [formData, setFormData] = useState({
     firstName: address?.firstName || "",
     lastName: address?.lastName || "",
+    mobileNumber: address?.mobileNumber || "",
     addressLine1: address?.addressLine1 || "",
     addressLine2: address?.addressLine2 || "",
     city: address?.city || "",
@@ -33,6 +34,7 @@ function AddressForm({ onSubmit, address }) {
     setFormData({
       firstName: "",
       lastName: "",
+      mobileNumber: "",
       addressLine1: "",
       addressLine2: "",
       city: "",
@@ -58,6 +60,10 @@ function AddressForm({ onSubmit, address }) {
       <label>
         Last Name:
         <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} className="form-input" required />
+      </label>
+      <label>
+        Mobile Number:
+        <input type="number" name="mobileNumber" value={formData.mobileNumber} onChange={handleChange} className="form-input" required />
       </label>
       <label>
         Address Line 1:

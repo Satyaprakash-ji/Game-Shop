@@ -43,6 +43,7 @@ const UserAddress = () => {
           <h3>
             {address.firstName} {address.lastName}
           </h3>
+          <p>Mobile Number: {address.mobileNumber}</p>
           <p>Address Line 1: {address.addressLine1}</p>
           <p>Address Line 2: {address.addressLine2}</p>
           <p>City: {address.city}</p>
