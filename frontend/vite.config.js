@@ -7,7 +7,7 @@ export default defineConfig({
     server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: ['http://localhost:3000', 'https://game-shop-ten-olive.vercel.app'],
         changeOrigin: true,
         secure: false,
       },
