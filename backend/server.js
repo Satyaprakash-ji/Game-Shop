@@ -17,7 +17,7 @@ connectDB();
 
 // middlewares
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://game-shop-ten-olive.vercel.app'],
+  origin: ['http://localhost:5173', 'https://gamer-garage.netlify.app'],
   credentials: true,
 }));
 app.use(express.json());
