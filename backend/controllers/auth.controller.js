@@ -40,7 +40,7 @@ export const registerHandler =  async (req, res) => {
 
     const token = jwt.sign(tokenData, process.env.JWT_SECRET, {expiresIn: "1d"});
     
-    return res.status(200).cookie("token", token, {maxAge:1*24*60*60*1000, httpOnly: true, sameSite: "None"}).json({ createdUser })
+    return res.status(200).cookie("token", token, {maxAge:1*24*60*60*1000, httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",}).json({ createdUser })
   } catch (error) {
     return res.status(500).json({ error: ["Internal Server Error."] })
   }
@@ -72,7 +72,7 @@ export const loginHandler = async (req, res) => {
 
       const token = jwt.sign(tokenData, process.env.JWT_SECRET, {expiresIn: "1d"});
     
-      return res.status(200).cookie("token", token, {maxAge:1*24*60*60*1000, httpOnly: true, sameSite: "None"}).json({ foundUser })
+      return res.status(200).cookie("token", token, {maxAge:1*24*60*60*1000, httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",}).json({ foundUser })
   } catch (error) {
     return res.status(500).json({ error: ["Internal Server Error."] })
   }
