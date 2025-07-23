@@ -2,12 +2,12 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoMdHeartEmpty } from "react-icons/io";
 import "./ProductDetails.css"
-import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import StarRating from "../../components/StarRating/StarRating";
 import { CartContext } from "../../contexts/CartContext";
 import { WishlistContext } from "../../contexts/WishlistContext";
 import { AuthContext } from "../../contexts/AuthContext";
+import axiosInstance from "../../utils/axiosInstance";
 
 
 const ProductDetails = () => {
@@ -22,7 +22,7 @@ const ProductDetails = () => {
     const getProductDetails = async () => {
         if (!productId) return;
         try {
-            const { data } = await axios.get(`/api/v1/product/${productId}`);
+            const { data } = await axiosInstance.get(`/api/v1/product/${productId}`);
             setCurrentProduct(data.product)
         } catch (error) {
             console.error(error);

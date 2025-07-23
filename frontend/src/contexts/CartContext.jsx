@@ -2,8 +2,8 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import { CartReducer, initialCart } from "../reducers/cartReducer";
 import { useNavigate, useLocation } from 'react-router-dom'
 import { toast } from "react-toastify";
-import axios from "axios";
 import { AuthContext } from "./AuthContext";
+import axiosInstance from "../utils/axiosInstance";
 
 export const CartContext = createContext();
 export const CartDispatchContext = createContext(null);
@@ -17,7 +17,7 @@ export const CartProvider = ({children}) => {
 
   const getAllCartItems = async () => {
       try {
-        const response = await axios.get("/api/v1/cart", {
+        const response = await axiosInstance.get("/api/v1/cart", {
           withCredentials: true,
         });
         const {status, data: { cart }} = response;
@@ -39,7 +39,7 @@ export const CartProvider = ({children}) => {
 
   const addToBasketHandler = async (product) => {
       try {
-        const response = await axios.post(
+        const response = await axiosInstance.post(
           "/api/v1/cart/add",
           { productId: product._id },
           { withCredentials: true },
@@ -62,7 +62,7 @@ export const CartProvider = ({children}) => {
 
   const updateQuantity = async (productId, type) => {
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         "/api/v1/cart/update-qty",
         { productId, type },
         { withCredentials: true }
@@ -81,7 +81,7 @@ export const CartProvider = ({children}) => {
 
   const deleteFromBasket = async (productId) => {
     try {
-      const response = await axios.delete(`/api/v1/cart/${productId}`, {
+      const response = await axiosInstance.delete(`/api/v1/cart/${productId}`, {
         data: { productId },
         withCredentials: true,
       });

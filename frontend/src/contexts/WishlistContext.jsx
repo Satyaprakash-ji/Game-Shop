@@ -1,9 +1,9 @@
 import { createContext, useContext, useReducer, useEffect } from "react"
 import { initialWishlist, wishlistReducer } from "../reducers/wishlistReducer"
-import axios from "axios"
 import { AuthContext } from "./AuthContext"
 import { useLocation, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+import axiosInstance from "../utils/axiosInstance"
 
 export const WishlistContext = createContext()
 export const WishlistDispatchContext = createContext()
@@ -17,7 +17,7 @@ export const WishlistProvider = ({children}) => {
 
   const getWishlistData = async () => {
       try {
-        const response = await axios.get("/api/v1/wishlist", {
+        const response = await axiosInstance.get("/api/v1/wishlist", {
           withCredentials: true,
           // headers: { authorization: loginData.token },
         });
@@ -41,7 +41,7 @@ export const WishlistProvider = ({children}) => {
 
   const addToWishlistHandler = async (product) => {
       try {
-          const response = await axios.post(
+          const response = await axiosInstance.post(
               "/api/v1/wishlist/add",
               { productId: product._id },
               {withCredentials: true},
@@ -61,7 +61,7 @@ export const WishlistProvider = ({children}) => {
 
   const deleteFromWishlist = async (productId) => {
       try {
-        const response = await axios.delete(`/api/v1/wishlist/${productId}`, {
+        const response = await axiosInstance.delete(`/api/v1/wishlist/${productId}`, {
             withCredentials: true,
         });
         const { status, data: { wishlist } } = response;

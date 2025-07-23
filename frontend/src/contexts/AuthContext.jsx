@@ -1,6 +1,6 @@
-import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import axiosInstance from "../utils/axiosInstance";
 
 export const AuthContext = createContext();
 
@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
   useEffect(() => {
   const checkAuth = async () => {
     try {
-      const response = await axios.get("/api/v1/user/me", {
+      const response = await axiosInstance.get("/api/v1/user/me", {
         withCredentials: true,
       });
 
@@ -43,7 +43,7 @@ export const AuthProvider = ({children}) => {
 
   const logIn = async (email, password) => {
     try {
-      const response = await axios.post(
+      const response = await axiosInstance.post(
         "/api/v1/user/login",
         { email, password },
         { withCredentials: true }
@@ -71,7 +71,7 @@ export const AuthProvider = ({children}) => {
 
   const signUp = async (firstName, lastName, email, password, confirmPassword) => {
     try {
-      const response = await axios.post("/api/v1/user/register", {
+      const response = await axiosInstance.post("/api/v1/user/register", {
         firstName,
         lastName,
         email,
@@ -104,7 +104,7 @@ export const AuthProvider = ({children}) => {
 
   const logOut = async () => {
     try {
-      await axios.post("/api/v1/user/logout", {}, { withCredentials: true });
+      await axiosInstance.post("/api/v1/user/logout", {}, { withCredentials: true });
       setLoginData({
       user: null,
       isLoggedIn: false,
@@ -120,7 +120,7 @@ export const AuthProvider = ({children}) => {
 
 const handleAddAddress = async (addressToAdd) => {
   try {
-    const response = await axios.post(
+    const response = await axiosInstance.post(
       "/api/v1/user/address",
       addressToAdd,
       { withCredentials: true }
@@ -145,7 +145,7 @@ const handleAddAddress = async (addressToAdd) => {
 
   const editAddress = async (updatedAddress) => {
     try {
-      const response = await axios.put(
+      const response = await axiosInstance.put(
         `/api/v1/user/address/${updatedAddress._id}`,
         updatedAddress,
         { withCredentials: true }
@@ -170,7 +170,7 @@ const handleAddAddress = async (addressToAdd) => {
 
     const deleteAddress = async (addressIdToDelete) => {
     try {
-      await axios.delete(`/api/v1/user/address/${addressIdToDelete}`, {
+      await axiosInstance.delete(`/api/v1/user/address/${addressIdToDelete}`, {
         withCredentials: true,
       });
 

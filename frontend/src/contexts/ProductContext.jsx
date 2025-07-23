@@ -1,7 +1,7 @@
 import { createContext, useEffect, useReducer } from "react";
-import axios from "axios";
 import { initialState, productReducer } from "../reducers/productReducer";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../utils/axiosInstance";
 
 export const ProductContext = createContext(null);
 export const ProductDispatchContext = createContext(null);
@@ -14,7 +14,7 @@ export const ProductProvider = ({children}) => {
 
     const getProductData = async() => {
         try {
-            const { status, data } = await axios.get("/api/v1/product");
+            const { status, data } = await axiosInstance.get("/api/v1/product");
             if(status === 200){
                 productDispatch({ type: "INITIALISED_DATA", payload: data })
             }
@@ -25,7 +25,7 @@ export const ProductProvider = ({children}) => {
 
     const getAllCategories = async() => {
         try {
-            const { status, data } = await axios.get("/api/v1/category")
+            const { status, data } = await axiosInstance.get("/api/v1/category")
             if(status === 200){
                 productDispatch({ type: "INITIALISED_CATEGORIES", payload: data})
             }
@@ -37,7 +37,7 @@ export const ProductProvider = ({children}) => {
     const getCategoriesProductData = async (categoryName) => {
         try {
             
-            const { status, data } = await axios.get(`/api/v1/category/${categoryName}`);
+            const { status, data } = await axiosInstance.get(`/api/v1/category/${categoryName}`);
             if( status === 200 ){
                 productDispatch({ type: "SELECTED_CATEGORY_DATA", payload: data })
             }

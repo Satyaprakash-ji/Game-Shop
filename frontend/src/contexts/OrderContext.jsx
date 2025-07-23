@@ -1,11 +1,11 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 import { orderInitialValue, orderReducer } from "../reducers/orderReducer";
 import { AuthContext } from "./AuthContext";
 import { CartContext } from "./CartContext";
+import axiosInstance from "../utils/axiosInstance";
 
 export const OrderContext = createContext();
 export const OrderDispatchContext = createContext();
@@ -18,7 +18,7 @@ export const OrderProvider = ({ children }) => {
 
   const getAllPlacedOrderItem = async () => {
     try {
-      const response = await axios.get("/api/v1/user/orders", {
+      const response = await axiosInstance.get("/api/v1/user/orders", {
         withCredentials: true,
       });
       const { status, data: { orders } } = response;
@@ -32,7 +32,7 @@ export const OrderProvider = ({ children }) => {
 
   const placeOrder = async (orderData) => {
     try {
-        const response = await axios.post("/api/v1/user/orders/place", orderData, {
+        const response = await axiosInstance.post("/api/v1/user/orders/place", orderData, {
         withCredentials: true,
     });
     const { status } = response;
