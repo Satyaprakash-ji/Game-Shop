@@ -18,7 +18,7 @@ export const WishlistProvider = ({children}) => {
   const getWishlistData = async () => {
       try {
         const response = await axiosInstance.get("/api/v1/wishlist", {
-          withCredentials: true,
+          // withCredentials: true,
           // headers: { authorization: loginData.token },
         });
         const { status, data: { wishlist } } = response;
@@ -44,7 +44,7 @@ export const WishlistProvider = ({children}) => {
           const response = await axiosInstance.post(
               "/api/v1/wishlist/add",
               { productId: product._id },
-              {withCredentials: true},
+              // {withCredentials: true},
             );
           const { status, data: { wishlist } } = response;
   
@@ -62,7 +62,7 @@ export const WishlistProvider = ({children}) => {
   const deleteFromWishlist = async (productId) => {
       try {
         const response = await axiosInstance.delete(`/api/v1/wishlist/${productId}`, {
-            withCredentials: true,
+            // withCredentials: true,
         });
         const { status, data: { wishlist } } = response;
   

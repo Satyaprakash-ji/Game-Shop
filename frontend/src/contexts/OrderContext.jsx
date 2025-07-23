@@ -19,7 +19,7 @@ export const OrderProvider = ({ children }) => {
   const getAllPlacedOrderItem = async () => {
     try {
       const response = await axiosInstance.get("/api/v1/user/orders", {
-        withCredentials: true,
+        // withCredentials: true,
       });
       const { status, data: { orders } } = response;
       if (status === 200) {
@@ -33,7 +33,7 @@ export const OrderProvider = ({ children }) => {
   const placeOrder = async (orderData) => {
     try {
         const response = await axiosInstance.post("/api/v1/user/orders/place", orderData, {
-        withCredentials: true,
+        // withCredentials: true,
     });
     const { status } = response;
     if(status === 201){

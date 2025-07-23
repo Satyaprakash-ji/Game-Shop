@@ -18,7 +18,7 @@ export const CartProvider = ({children}) => {
   const getAllCartItems = async () => {
       try {
         const response = await axiosInstance.get("/api/v1/cart", {
-          withCredentials: true,
+          // withCredentials: true,
         });
         const {status, data: { cart }} = response;
         if (status === 200) {
@@ -42,7 +42,7 @@ export const CartProvider = ({children}) => {
         const response = await axiosInstance.post(
           "/api/v1/cart/add",
           { productId: product._id },
-          { withCredentials: true },
+          // { withCredentials: true },
         );
         const {status, data: { cart, message }} = response;
         
@@ -65,7 +65,7 @@ export const CartProvider = ({children}) => {
       const response = await axiosInstance.post(
         "/api/v1/cart/update-qty",
         { productId, type },
-        { withCredentials: true }
+        // { withCredentials: true }
       );
 
       const { status, data: { cart } } = response;
@@ -83,7 +83,7 @@ export const CartProvider = ({children}) => {
     try {
       const response = await axiosInstance.delete(`/api/v1/cart/${productId}`, {
         data: { productId },
-        withCredentials: true,
+        // withCredentials: true,
       });
       const {status, data: { cart }} = response;
   
