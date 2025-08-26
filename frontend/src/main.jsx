@@ -12,7 +12,6 @@ import { WishlistProvider } from "./contexts/WishlistContext";
 
 import "react-toastify/dist/ReactToastify.css";
 
-export { ProductContext };
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

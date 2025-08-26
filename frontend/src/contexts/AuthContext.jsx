@@ -6,19 +6,22 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
 
+  const [ isLoading, setIsLoading ] = useState(true);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [ allUsers, setAllUsers ] = useState([]);
 
   const [loginData, setLoginData] = useState({
     user: null,
-    isLoggedIn: null,
+    isLoggedIn: false,
     isError: null,
+    role: null,
   });
 
   useEffect(() => {
   const checkAuth = async () => {
+    setAuthLoading(true);
     try {
-      const response = await axiosInstance.get("/api/v1/user/me", {
-        withCredentials: true,
-      });
+      const response = await axiosInstance.get("/api/v1/user/me");
 
       const { user } = response.data;
 
@@ -26,27 +29,30 @@ export const AuthProvider = ({children}) => {
         user,
         isLoggedIn: true,
         isError: null,
+        role: user.role,
       });
-
+      setAuthLoading(false);
     } catch (error) {
       setLoginData({
         user: null,
         isLoggedIn: false,
         isError: null,
+        role: null,
       });
       console.log(error)
     }
+    setAuthLoading(false);
   };
 
   checkAuth();
 }, []);
 
   const logIn = async (email, password) => {
+    setIsLoading(true);
     try {
       const response = await axiosInstance.post(
         "/api/v1/user/login",
         { email, password },
-        { withCredentials: true }
       );
       const { foundUser } = response.data;
       
@@ -54,22 +60,26 @@ export const AuthProvider = ({children}) => {
         user: foundUser,
         isLoggedIn: true,
         isError: null,
+        role: foundUser.role,
       });
 
       toast.success("Logged In!");
-
+      setIsLoading(false);
     } catch (err) {
       setLoginData({
         ...loginData,
         isError: err.response.data.errors[0],
         isLoggedIn: false,
+        role: null,
       });
 
       toast.error(`${err.response.data.errors[0]}`);
+      setIsLoading(false);
     }
   }
 
   const signUp = async (firstName, lastName, email, password, confirmPassword) => {
+    setIsLoading(true);
     try {
       const response = await axiosInstance.post("/api/v1/user/register", {
         firstName,
@@ -79,7 +89,6 @@ export const AuthProvider = ({children}) => {
         confirmPassword,
         role: "user"
       },
-      { withCredentials: true }
     );
       const { createdUser } = response.data;
 
@@ -87,28 +96,32 @@ export const AuthProvider = ({children}) => {
         user: createdUser,
         isLoggedIn: true,
         isError: null,
+        role: createdUser.role,
       });
 
       toast.success("Successfully Signed Up!");
-
+      setIsLoading(false);
     } catch (error) {
       setLoginData({
         ...loginData,
         isError: error.response.data.errors[0],
         isLoggedIn: false,
+        role: null,
       });
 
       toast.error(`${error.response.data.errors[0]}`);
+      setIsLoading(false);
     }
   }
 
   const logOut = async () => {
     try {
-      await axiosInstance.post("/api/v1/user/logout", {}, { withCredentials: true });
+      await axiosInstance.post("/api/v1/user/logout", {});
       setLoginData({
       user: null,
       isLoggedIn: false,
       isError: null,
+      role: null,
     });
 
     toast.success("Log Out!");
@@ -118,12 +131,25 @@ export const AuthProvider = ({children}) => {
     }
   };
 
+    const getAllUsers = async () => {
+    setIsLoading(true);
+    try {
+      const { data } = await axiosInstance.get("/api/v1/user/all-users");
+      setAllUsers(data.users);
+      setIsLoading(false);
+    } catch (error) {
+      toast.error(error.response?.data?.error || "Failed to fetch users");
+      console.error("Error fetching users:", error);
+      setIsLoading(false);
+    }
+  };
+
 const handleAddAddress = async (addressToAdd) => {
+  setIsLoading(true);
   try {
     const response = await axiosInstance.post(
       "/api/v1/user/address",
       addressToAdd,
-      { withCredentials: true }
     );
 
     const { userAddresses } = response.data;
@@ -137,18 +163,20 @@ const handleAddAddress = async (addressToAdd) => {
     }));
 
     toast.success("Address added successfully!");
+    setIsLoading(false);
   } catch (error) {
     console.error(error);
     toast.error("Failed to add address");
+    setIsLoading(false);
   }
 };
 
   const editAddress = async (updatedAddress) => {
+    setIsLoading(true);
     try {
       const response = await axiosInstance.put(
         `/api/v1/user/address/${updatedAddress._id}`,
         updatedAddress,
-        { withCredentials: true }
       );
 
       const { userAddresses } = response.data;
@@ -162,17 +190,18 @@ const handleAddAddress = async (addressToAdd) => {
       }));
 
       toast.success("Address updated successfully!");
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
       toast.error("Failed to update address");
+      setIsLoading(false);
     }
   };
 
     const deleteAddress = async (addressIdToDelete) => {
+    setIsLoading(true);
     try {
-      await axiosInstance.delete(`/api/v1/user/address/${addressIdToDelete}`, {
-        withCredentials: true,
-      });
+      await axiosInstance.delete(`/api/v1/user/address/${addressIdToDelete}`, {} );
 
       // Update frontend state
       const updatedAddresses = loginData.user.userAddresses.filter(
@@ -188,14 +217,16 @@ const handleAddAddress = async (addressToAdd) => {
       }));
 
       toast.success("Address deleted!");
+      setIsLoading(false);
     } catch (error) {
       console.error("Failed to delete address:", error);
       toast.error("Failed to delete address. Please try again.");
+      setIsLoading(false);
     }
   };
 
     return(
-        <AuthContext.Provider value={{loginData, setLoginData, signUp, logIn, logOut, handleAddAddress, editAddress, deleteAddress}}>
+        <AuthContext.Provider value={{loginData, setLoginData, signUp, logIn, logOut, handleAddAddress, editAddress, deleteAddress, isLoading, getAllUsers, allUsers, authLoading}}>
             {children}
         </AuthContext.Provider>
     )

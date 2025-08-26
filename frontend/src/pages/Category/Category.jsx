@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ProductContext } from "../../main";
+import { ProductContext } from "../../contexts/ProductContext";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import "./Category.css";
 

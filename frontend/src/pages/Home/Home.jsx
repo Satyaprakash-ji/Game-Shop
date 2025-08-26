@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./Home.css"
-import { ProductContext } from "../../main";
+import { ProductContext } from "../../contexts/ProductContext";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import { useNavigate } from "react-router-dom";

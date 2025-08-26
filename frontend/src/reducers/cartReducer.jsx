@@ -17,8 +17,6 @@ export const CartReducer = (state, {type, payload}) => {
             return { ...state, cartData: payload }
         case "UPDATE_BASKET":
             return { ...state, cartData: payload }
-        // case "DECREASE_QUANTITY":
-        //     return { ...state, cartData: payload }
         case "ORDER_PLACE":
             return { ...state, orderPlaced: [...state.orderPlaced, payload] }
         default:

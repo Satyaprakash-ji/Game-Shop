@@ -2,13 +2,18 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./OrderHistory.css";
 import { OrderContext } from "../../contexts/OrderContext";
+import Loader from "../../components/Loader/Loader";
 
 const OrderHistory = () => {
   const navigate = useNavigate();
-  const { order } = useContext(OrderContext);
+  const { order, isLoading } = useContext(OrderContext);
 
   const { orderHistory } = order;
   const orderList = Array.isArray(orderHistory) ? orderHistory : [orderHistory];
+
+  if (isLoading) {
+    return <Loader />
+  }
   
   return (
     <div className="order-history">

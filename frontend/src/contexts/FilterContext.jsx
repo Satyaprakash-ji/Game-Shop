@@ -27,14 +27,7 @@ export const FilterProvider = ({ children }) => {
     savedCategoryData?.products[0].price
   );
 
-  const searchFilteredProduct =
-    filterState?.filters?.search?.length > 0
-      && products?.productsData?.products?.filter((game) =>
-          game.title
-            .toLowerCase()
-            .includes(filterState?.filters?.search?.toLowerCase())
-        )
-      // : savedCategoryData;
+  const searchFilteredProduct = filterState?.filters?.search?.length > 0 && products?.productsData?.products?.filter((game) => game.title.toLowerCase().includes(filterState?.filters?.search?.toLowerCase()))
 
   const priceRangeFilteredProduct = savedCategoryData?.products?.filter((game) => game?.price <= filterState?.filters?.priceSlider );
 

@@ -6,8 +6,6 @@
   }
 
   .order-history h1{
-    /* display: flex;
-    justify-content: center; */
     padding-bottom: 1rem ;
   }
 
@@ -88,27 +86,3 @@
     object-fit: cover;
     object-position: top;
   }
-  
-  /* @media (min-width: 768px) {
-    .order-history-main {
-      flex-direction: row;
-    }
-    .order-history-main .order-history-left {
-      width: 60%;
-      border-right: 1px solid #ccc;
-    }
-    .order-history-main .order-history-right {
-      padding-left: 1rem;
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .order-history-main {
-      flex-direction: row;
-    }
-    .order-history-main .order-history-left {
-      width: 70%;
-      border-right: 1px solid #ccc;
-    }
-  } */
-  

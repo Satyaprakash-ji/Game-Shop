@@ -3,7 +3,7 @@ import "./ProductListings.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import FilterBox from "./FilterBox";
 import { FilterContext } from "../../contexts/FilterContext";
-import { ProductContext } from "../../main";
+import { ProductContext } from "../../contexts/ProductContext";
 
 const ProductListings = () => {
 

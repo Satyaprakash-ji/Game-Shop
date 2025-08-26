@@ -8,6 +8,7 @@ import { CartContext } from "../../contexts/CartContext";
 import { WishlistContext } from "../../contexts/WishlistContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import axiosInstance from "../../utils/axiosInstance";
+import Loader from "../../components/Loader/Loader";
 
 
 const ProductDetails = () => {
@@ -70,9 +71,7 @@ const ProductDetails = () => {
                 </div>
             </div>
         </div>
-    ): (        <div style={{width: "100%", height: "71vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
-        <img style={{width: "100px", height: "full"}} src="\assets\Loading.gif" alt="" />
-    </div>)
+    ): ( <Loader /> )
 }
 
 export default ProductDetails;

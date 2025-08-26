@@ -37,7 +37,6 @@ const addressSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // id: String // for frontend selection, can use uuid
 });
 
 const userSchema = new mongoose.Schema(
@@ -97,7 +96,7 @@ const userSchema = new mongoose.Schema(
         ],
         totalAmount: Number,
         deliveryAddress: {
-          type: Object, // or use a dedicated Address schema
+          type: Object,
         },
         status: {
           type: String,

@@ -1,5 +1,3 @@
-
-// import {V2 as cloudinary} from "cloudinary";
 import pkg from 'cloudinary';
 const { v2: cloudinary } = pkg;
 import fs from "fs";
@@ -33,4 +31,18 @@ const uploadOnCloudinary = async (localFilePath) => {
     }
 }
 
-export { uploadOnCloudinary }
+const removeFromCloudinary = async (existingProduct) => {
+        if (existingProduct.img) {
+        const urlParts = existingProduct.img.split('/upload/');
+        if (urlParts.length < 2) return null;
+        const publicIdWithExtension = urlParts[1].replace(/^v\d+\//, '');
+        const publicId = publicIdWithExtension.replace(/\.[^/.]+$/, '');
+        try {
+          await cloudinary.uploader.destroy(publicId, { resource_type: "image" });
+        } catch (err) {
+          console.error('Error deleting old image from Cloudinary', err);
+        }
+      }
+}
+
+export { uploadOnCloudinary, removeFromCloudinary }

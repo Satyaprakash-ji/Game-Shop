@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-function AddressForm({ onSubmit, address }) {
+const AddressForm = ({ onSubmit, address }) => {
+
   const [formData, setFormData] = useState({
     firstName: address?.firstName || "",
     lastName: address?.lastName || "",

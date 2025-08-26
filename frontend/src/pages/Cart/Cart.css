@@ -106,7 +106,6 @@ table {
 .cart-price{
     width: 30%;
     height: 310px;
-    /* background-color: salmon; */
     color: #fff;
     padding: 25px;
     border: 3px solid #8d8d8d47;
@@ -129,7 +128,6 @@ table {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* background-color: red; */
     font-size: 1.3rem;
     padding: 15px 10px;
 }
@@ -153,14 +151,12 @@ table {
   color: white;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   flex-direction: column;
 }
 
 .empty-cart img{
   width: 300px;
   height: 300px;
-  /* margin-top: 100px; */
 }
 
 .empty-cart h1{

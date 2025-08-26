@@ -30,7 +30,10 @@ const Login = () => {
     };
 
     useEffect(() => {
-      if (loginData.isLoggedIn) {
+      if (loginData.role === "admin") {
+        navigate(location?.state?.from || "/admin", { replace: true });
+      }
+      if (loginData.role === "user") {
         navigate(location?.state?.from || "/", { replace: true });
       }
     }, [loginData.isLoggedIn, navigate, location]);

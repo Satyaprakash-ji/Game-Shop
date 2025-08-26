@@ -82,8 +82,8 @@ export const logoutHandler = async (req, res) => {
   try {
       res.clearCookie("token", {
       httpOnly: true,
-      sameSite: "None",
       secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
     });
 
     return res.status(200).json({ message: "Logged out successfully." });
@@ -104,6 +104,18 @@ export const getMe = async (req, res) => {
 
     return res.status(200).json({ user });
   } catch (error) {
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getAllUsersHandler = async (req, res) => {
+  try {
+
+    const users = await User.find().select("-password");
+
+    return res.status(200).json({ users });
+  } catch (error) {
+    console.error("Error fetching users:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -252,6 +264,37 @@ export const getOrderHistoryHandler = async (req, res) => {
 
     return res.status(200).json({ orders: user.orders });
   } catch (error) {
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+export const getAllOrdersHandler = async (req, res) => {
+  try {
+    // Fetch all users with their orders
+    const usersWithOrders = await User.find({ "orders.0": { $exists: true } }) // Only users with at least 1 order
+      .select("firstName lastName email orders") // Select only required fields
+      .populate("orders.products.product", "title price img"); // Populate product details
+
+    // Combine all orders into a single array
+    const allOrders = usersWithOrders.flatMap((user) =>
+      user.orders.map((order) => ({
+        ...order._doc, // Spread order details
+        user: {
+          name: `${user.firstName} ${user.lastName}`,
+          email: user.email,
+          userId: user._id,
+        },
+      }))
+    );
+
+    if (!allOrders.length) {
+      return res.status(404).json({ error: "No orders found." });
+    }
+
+    return res.status(200).json({ orders: allOrders });
+  } catch (error) {
+    console.error("Error fetching all orders:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };

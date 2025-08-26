@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import NavigationBar from "../components/NavigationBar/NavigationBar";
 import Footer from "../components/Footer/Footer";
 
-function RootLayout() {
+const RootLayout = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function RootLayout() {
         <NavigationBar />
       </header>
 
-      <main className="main-content">
+      <main className="main-contents">
         <Outlet />
       </main>
 

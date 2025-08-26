@@ -4,10 +4,11 @@ import { RxCross2 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import { OrderContext } from "../../contexts/OrderContext";
 import { CartContext } from "../../contexts/CartContext";
+import Loader from "../../components/Loader/Loader";
 
 const Cart = () => {
 
-  const { cart, deleteFromBasket, updateQuantity } = useContext(CartContext)
+  const { cart, deleteFromBasket, updateQuantity, isLoading } = useContext(CartContext)
   const { orderDispatch } = useContext(OrderContext)
   const navigate  = useNavigate()
   const { cartData } = cart;
@@ -25,6 +26,11 @@ const Cart = () => {
     });
     navigate("/checkout");
   }
+
+  if (isLoading) {
+    return <Loader />
+  }
+  
   return( 
     <div>
       <h1 className="cart-title">YOUR CART</h1> 
@@ -43,8 +49,7 @@ const Cart = () => {
                 </thead>
                 <tbody>
                   {cartData?.map(({product, qty}) => (
-                    // const {product} = productData;
-                    <tr key={product.id}>
+                    <tr key={product._id}>
                       <td>
                         <span className="delete-icon" onClick={() => deleteFromBasket(product._id)}><RxCross2 /></span>
                         <img src={product.img} alt={product.title} />

@@ -4,12 +4,17 @@ import ProductCard from "../../components/ProductCard/ProductCard"
 import { RxCross2 } from "react-icons/rx";
 import { WishlistContext } from "../../contexts/WishlistContext";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 const Wishlist = () => {
 
-    const { wishlist, deleteFromWishlist } = useContext(WishlistContext)
+    const { wishlist, deleteFromWishlist, isLoading } = useContext(WishlistContext)
     const { wishlistData } = wishlist
     const navigate = useNavigate();
+
+    if (isLoading) {
+      return <Loader />
+    }
 
     return (
       <div className="wishlist-container">

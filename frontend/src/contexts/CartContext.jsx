@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { CartReducer, initialCart } from "../reducers/cartReducer";
 import { useNavigate, useLocation } from 'react-router-dom'
 import { toast } from "react-toastify";
@@ -12,20 +12,22 @@ export const CartProvider = ({children}) => {
 
   const [cart, cartDispatch] = useReducer(CartReducer, initialCart);
   const { loginData } = useContext(AuthContext)
+  const [ isLoading, setIsLoading ] = useState(true);
   const navigate = useNavigate()
   const location = useLocation()
 
   const getAllCartItems = async () => {
+      setIsLoading(true);
       try {
-        const response = await axiosInstance.get("/api/v1/cart", {
-          // withCredentials: true,
-        });
+        const response = await axiosInstance.get("/api/v1/cart", {} );
         const {status, data: { cart }} = response;
         if (status === 200) {
           cartDispatch({ type: "DISPLAY_BASKET", payload: cart });
         }
+        setIsLoading(false);
       } catch (error) {
         console.error("Failed to fetch cart:", error);
+        setIsLoading(false);
       }
   };
 
@@ -38,11 +40,11 @@ export const CartProvider = ({children}) => {
   }, [loginData?.isLoggedIn]);
 
   const addToBasketHandler = async (product) => {
+      setIsLoading(true);
       try {
         const response = await axiosInstance.post(
           "/api/v1/cart/add",
           { productId: product._id },
-          // { withCredentials: true },
         );
         const {status, data: { cart, message }} = response;
         
@@ -54,9 +56,11 @@ export const CartProvider = ({children}) => {
             toast.success(`"${product.title}" successfully added to Basket`);
           }
         }
+        setIsLoading(false);
       } catch (error) {
         navigate('/login', {state:{from :location}})
         toast.error(`Failed to Add "${product.title}" to Basket`,error);
+        setIsLoading(false);
       }
   };
 
@@ -65,7 +69,6 @@ export const CartProvider = ({children}) => {
       const response = await axiosInstance.post(
         "/api/v1/cart/update-qty",
         { productId, type },
-        // { withCredentials: true }
       );
 
       const { status, data: { cart } } = response;
@@ -83,7 +86,6 @@ export const CartProvider = ({children}) => {
     try {
       const response = await axiosInstance.delete(`/api/v1/cart/${productId}`, {
         data: { productId },
-        // withCredentials: true,
       });
       const {status, data: { cart }} = response;
   
@@ -100,7 +102,7 @@ export const CartProvider = ({children}) => {
   const isItemInBasket = (productId) => Array.isArray(cart?.cartData) && cart.cartData.some((item) => item.product?._id === productId);
 
   return(
-      <CartContext.Provider value={{cart, getAllCartItems, addToBasketHandler, deleteFromBasket, updateQuantity, isItemInBasket }}>
+      <CartContext.Provider value={{cart, getAllCartItems, addToBasketHandler, deleteFromBasket, updateQuantity, isItemInBasket, isLoading }}>
         <CartDispatchContext.Provider value={{cartDispatch}}>
           {children}
         </CartDispatchContext.Provider>

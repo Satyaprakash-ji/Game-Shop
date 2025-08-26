@@ -1,0 +1,96 @@
+.main-content {
+  min-height: calc(100vh - 13rem);
+  margin-left: 220px;
+  padding: 40px;
+  color: #fff;
+}
+
+.form-container {
+  background-color: #1a1a1a;
+}
+
+.product-form {
+  margin-top: 30px;
+  color: #fff;
+}
+
+.product-form > label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-input {
+  padding: 10px;
+  border: 2px solid #8d8d8d;
+  border-radius: 2px;
+  width: 100%;
+  background-color: transparent;
+  color: white;
+}
+
+.form-button {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #ff7200;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #ff6100;
+  transition: ease-in 0.1s;
+}
+
+
+.table-container {
+  margin-top: 30px;
+  color: #fff;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1A1A1A;
+  margin-top: 20px;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #8d8d8d47;
+  padding: 0.8em 1em;
+  text-align: left;
+}
+
+.data-table th:nth-child(9){
+  padding: 0.8em 1.1em;
+}
+
+.data-table thead th {
+  background: #2a2d2f;
+  color: #fff;
+}
+
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 1.1rem;
+  margin-right: 10px;
+}
+.icon-btn:last-child {
+  margin-right: 0;
+}
+
+
+@media (max-width: 900px) {
+  .main-content{
+    margin-left: 0;
+    padding: 18px;
+  }
+}
