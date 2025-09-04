@@ -18,29 +18,28 @@ export const AuthProvider = ({children}) => {
   });
 
   useEffect(() => {
-  const checkAuth = async () => {
+  const checkAuth = () => {
     setAuthLoading(true);
-    try {
-      const response = await axiosInstance.get("/api/v1/user/me");
 
-      const { user } = response.data;
+    const storedUser = localStorage.getItem("user");
 
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
       setLoginData({
         user,
         isLoggedIn: true,
         isError: null,
         role: user.role,
       });
-      setAuthLoading(false);
-    } catch (error) {
+    } else {
       setLoginData({
         user: null,
         isLoggedIn: false,
         isError: null,
         role: null,
       });
-      console.log(error)
     }
+
     setAuthLoading(false);
   };
 
@@ -56,6 +55,7 @@ export const AuthProvider = ({children}) => {
       );
       const { foundUser } = response.data;
       
+      localStorage.setItem("user", JSON.stringify(foundUser));
       setLoginData({
         user: foundUser,
         isLoggedIn: true,
@@ -116,6 +116,7 @@ export const AuthProvider = ({children}) => {
 
   const logOut = async () => {
     try {
+      localStorage.removeItem("user");
       await axiosInstance.post("/api/v1/user/logout", {});
       setLoginData({
       user: null,
