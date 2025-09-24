@@ -38,7 +38,7 @@ const Cart = () => {
         <div className="cart">
           <div className="cart-products">
             <div className="cart-products-heading">
-              <table>
+              <table className="cart-table">
                 <thead>
                   <tr>
                     <th>PRODUCT</th>
@@ -47,15 +47,15 @@ const Cart = () => {
                     <th>SUBTOTAL</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="cart-table-body">
                   {cartData?.map(({product, qty}) => (
                     <tr key={product._id}>
                       <td>
                         <span className="delete-icon" onClick={() => deleteFromBasket(product._id)}><RxCross2 /></span>
                         <img src={product.img} alt={product.title} />
-                        <span>{product.title}</span>
+                        <span className="product-title">{product.title}</span>
                       </td>
-                      <td>₹{product.price}</td>
+                      <td className="table-cart-price">₹{product.price}</td>
                       <td>
                         <div className="quantity">
                           <div className="minus" onClick={() => {if(qty > 1 ) updateQuantity(product._id, "decrement")}}>-</div>
@@ -63,7 +63,7 @@ const Cart = () => {
                           <div className="plus" onClick={() => updateQuantity(product._id, "increment")}>+</div>
                         </div>
                       </td>
-                      <td>₹{product.price * qty}</td>
+                      <td className="cart-subtotal">₹{product.price * qty}</td>
                     </tr>
 ))}
                 </tbody>

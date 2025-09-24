@@ -27,7 +27,7 @@ const OrderHistory = () => {
         orderList?.map(
           ({ orderId, totalAmount, deliveryAddress, products }) => {
             return (
-              <div className="order-history-main">
+              <div key={orderId} className="order-history-main">
                 <div className="order-history-left">
                   <h3>Order Confirmed!</h3>
                   <p>
@@ -55,7 +55,7 @@ const OrderHistory = () => {
                 </div>
                 <div className="order-history-right">
                   {products?.map(({ product, qty }) => (
-                    <div className="order-history-right-card">
+                    <div key={product._id} className="order-history-right-card">
                       <img src={product.img} alt={product.title} />
                       <div>
                         <h4>

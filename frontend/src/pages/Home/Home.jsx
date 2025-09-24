@@ -12,10 +12,7 @@ const Home = () => {
 
     const saleProduct = products?.productsData?.products?.sort((a,b) => b.rating - a.rating).slice(0,4)
     const featuredProduct = products?.productsData?.products?.sort((a,b) => new Date(b.releaseDate)- new Date(a.releaseDate)).slice(0,8)
-
-    const saleProductDisplay = saleProduct?.map((game) => <ProductCard key={game._id} product={game}/>)
-    const featuredProductDisplay = featuredProduct?.map((game) => <ProductCard key={game._id} product={game}/>)
-    const categoriesDisplay = products?.categories?.categoriesData?.categories?.map((category) => <CategoryCard key={category._id} category={category} />)
+    const categoriesData = products?.categories?.categoriesData?.categories
 
     return(
         <div className="home-page">
@@ -30,33 +27,41 @@ const Home = () => {
             </div>
             <div className="product-container">
                 <div className="product-on-sale-section">
-                    <div className="text">
-                        <div className="horizontal-line"></div>
-                        <h2>Product On Sale</h2>
-                        <div className="horizontal-line"></div>
+                    <div className="heading-container">
+                        <span className="horizontal-line"></span>
+                        <h2 className="heading-title">Product On Sale</h2>
+                        <span className="horizontal-line"></span>
                     </div>
                     <div className="products-cards">
-                        {saleProductDisplay}
+                        {saleProduct?.map((game) => (
+                            <span key={game._id} className="internal-product-card"><ProductCard key={game._id} product={game} /></span>
+                            
+                        ))}
                     </div>
                 </div>
                 <div className="featured-product-section">
-                    <div className="text">
-                        <div className="horizontal-line"></div>
-                        <h2>Featured Products</h2>
-                        <div className="horizontal-line"></div>
+                    <div className="heading-container">
+                        <span className="horizontal-line"></span>
+                        <h2 className="heading-title">Featured Products</h2>
+                        <span className="horizontal-line"></span>
                     </div>
                     <div className="products-cards">
-                        {featuredProductDisplay}
+                        {featuredProduct?.map((game) => (
+                            <span key={game._id} className="internal-product-card"><ProductCard key={game._id} product={game} /></span>
+                            
+                        ))}
                     </div>
                 </div>
                 <div className="category-section">
-                    <div className="text">
-                        <div className="horizontal-line"></div>
-                        <h2>Shop by Category</h2>
-                        <div className="horizontal-line"></div>
+                    <div className="heading-container">
+                        <span className="horizontal-line"></span>
+                        <h2 className="heading-title">Shop by Category</h2>
+                        <span className="horizontal-line"></span>
                     </div>
                     <div className="products-cards">
-                        {categoriesDisplay}
+                        {categoriesData?.map((category) => (
+                            <CategoryCard key={category._id} category={category} />
+                        ))}
                     </div>
                 </div>
             </div>

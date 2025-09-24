@@ -2,6 +2,7 @@ import "./Wishlist.css"
 import { useContext } from "react"
 import ProductCard from "../../components/ProductCard/ProductCard"
 import { RxCross2 } from "react-icons/rx";
+import { RxCross1 } from "react-icons/rx";
 import { WishlistContext } from "../../contexts/WishlistContext";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
@@ -21,12 +22,14 @@ const Wishlist = () => {
         <h1 className="wishlist-title">YOUR WISHLIST</h1>
         <div className="wishlist-product-container">
           {wishlistData.length >= 1 ? (
-            wishlistData?.map((product) => (
-              <div className="single-product-container">
-                <RxCross2 className="cross-icon" onClick={() => deleteFromWishlist(product._id)} />
-                <ProductCard product={product} />
-              </div>
-            ))
+            <div className="products-card">
+              {wishlistData?.map((product) => (
+                <div key={product._id} className="single-product-container">
+                  <RxCross2 className="cross-icons" onClick={() => deleteFromWishlist(product._id)} />
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
           ) : (
             <div className="empty-cart">
               <img src="\assets\wishlist.png" alt="" />

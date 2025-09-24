@@ -1,6 +1,6 @@
 import "./CategoryCard.css"
 import { useContext } from "react";
-import { ProductContext, ProductDispatchContext } from "../../contexts/ProductContext"
+import { ProductContext } from "../../contexts/ProductContext"
 
 const CategoryCard = ({ category }) => {
 

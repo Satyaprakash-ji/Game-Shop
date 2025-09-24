@@ -12,7 +12,7 @@ const Orders = () => {
   }, []);
 
   return (
-    <main className="main-content">
+    <main className="orders-main-content">
       <h2>All Orders</h2>
       <div className="table-container">
         <table className="data-table">
@@ -36,7 +36,7 @@ const Orders = () => {
                 <td>{order.status}</td>
                 <td>{order.products.reduce((sum, item) => sum + item.qty, 0)}</td>
                 <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                <td>
+                <td className="functional-icons">
                   <button className="icon-btn"><FaEye style={{ color:"gray" }}/></button>
                   <button className="icon-btn"><FaTrash style={{ color:"red" }}/></button>
                 </td>

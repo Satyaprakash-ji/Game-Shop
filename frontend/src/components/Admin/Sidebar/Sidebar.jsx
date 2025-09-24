@@ -1,12 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import { FaBox, FaPlus, FaUsers, FaShoppingCart, FaStar, FaTachometerAlt } from "react-icons/fa";
+import { FaBox, FaPlus, FaUsers, FaShoppingCart, FaTachometerAlt } from "react-icons/fa";
 import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({isMenuOpen}) => {
   const location = useLocation();
 
   return (
-    <aside className="admin-sidebar">
+    <aside className={`admin-sidebar ${isMenuOpen ? "open" : "closed"}`}>
       <Link to="/admin" className="sidebar-title">
         <FaTachometerAlt className="sidebar-icon" /> Admin Dashboard
       </Link>

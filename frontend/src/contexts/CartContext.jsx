@@ -12,7 +12,7 @@ export const CartProvider = ({children}) => {
 
   const [cart, cartDispatch] = useReducer(CartReducer, initialCart);
   const { loginData } = useContext(AuthContext)
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [ isLoading, setIsLoading ] = useState(false);
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -35,7 +35,7 @@ export const CartProvider = ({children}) => {
     if (loginData?.isLoggedIn) {
       getAllCartItems();
     } else {
-      cartDispatch({ type: "DISPLAY_BASKET", payload: [] }); // Clear cart on logout
+      cartDispatch({ type: "DISPLAY_BASKET", payload: [] });
     }
   }, [loginData?.isLoggedIn]);
 

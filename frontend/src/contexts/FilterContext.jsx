@@ -59,7 +59,7 @@ export const FilterProvider = ({ children }) => {
 
   return (
     <FilterContext.Provider
-      value={{ minRangeValue, maxRangeValue, filters: filterState.filters, sortByPriceFilteredProduct, searchFilteredProduct}}
+      value={{ minRangeValue, maxRangeValue, filters: filterState.filters, sortByPriceFilteredProduct, searchFilteredProduct, savedCategoryData}}
     >
       <FilterDispatchContext.Provider value={{ filterDispatch }}>
         {children}

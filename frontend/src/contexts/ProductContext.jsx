@@ -103,9 +103,10 @@ const updateProduct = async (id, updatedData) => {
             }
             navigate("/products", window.scrollTo(0, 0))
             localStorage.setItem('selectedCategoryData', JSON.stringify(data));
+            localStorage.setItem("selectedCategoryName", categoryName);
             setIsLoading(false);
         } catch (error) {
-            console.log(error)
+            console.error(error)
             setIsLoading(false);
         }
     }

@@ -12,7 +12,7 @@ const Users = () => {
   },[]);
 
   return (
-    <main className="main-content">
+    <main className="users-main-content">
       <h2>All Users</h2>
       <div className="table-container">
         <table className="data-table">
@@ -34,7 +34,7 @@ const Users = () => {
                 <td>{user.email}</td>
                 <td>{user.role}</td>
                 <td>{new Date(user.createdAt).toLocaleDateString()}</td>
-                <td>
+                <td className="functional-icons">
                   <button className="icon-btn"><FaEdit style={{ color:"gray" }}/></button>
                   <button className="icon-btn"><FaTrash style={{ color:"red" }}/></button>
                 </td>

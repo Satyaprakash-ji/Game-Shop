@@ -1,6 +1,11 @@
-.main-content {
+.dashboard-main-content {
+  width: 80%;
+  color: #fff;
   padding: 20px;
   min-height: calc(100vh - 13rem);
+  position: absolute;
+  right: 0%;
+  overflow-x: hidden;
 }
 
 .dashboard-title {
@@ -18,7 +23,7 @@
 
 .db-card {
   background: #2a2d2f;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   border-radius: 14px;
   padding: 20px;
   text-align: center;
@@ -43,4 +48,59 @@
 .db-card h2 {
   margin: 0;
   font-size: 2rem;
+}
+
+
+
+/* Tablet screens (≤1024px) */
+@media screen and (max-width: 1024px) {
+  .dashboard-main-content {
+    padding: 15px;
+    width: 72%;
+  }
+
+  .dashboard-title {
+    font-size: 1.6rem;
+  }
+
+  .dashboard-cards {
+    gap: 15px;
+  }
+
+  .db-card {
+    padding: 15px;
+  }
+}
+
+/* Mobile screens (≤768px) */
+@media screen and (max-width: 768px) {
+  .dashboard-main-content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .dashboard-title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .dashboard-cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .db-card {
+    padding: 12px;
+    width: 160px;
+  }
+
+  .db-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .db-card h4 {
+    font-size: 0.9rem;
+  }
 }

@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./NavigationBar.css"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FilterDispatchContext } from "../../contexts/FilterContext";
 import { FilterContext } from "../../contexts/FilterContext";
 import { IoMdHeartEmpty } from "react-icons/io";
@@ -10,6 +10,8 @@ import { Tooltip as ReactTooltip } from 'react-tooltip'
 import { AuthContext } from "../../contexts/AuthContext";
 import { CartContext } from "../../contexts/CartContext";
 import { WishlistContext } from "../../contexts/WishlistContext";
+import { TiThMenuOutline } from "react-icons/ti";
+import { RxCross2 } from "react-icons/rx";
 
 const NavigationBar = () => {
 
@@ -19,6 +21,7 @@ const NavigationBar = () => {
     const navigate = useNavigate();
     const { wishlist } = useContext(WishlistContext)
     const { cart } = useContext(CartContext);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleSearchFilterChange = (event) => {
         filterDispatch({
@@ -34,9 +37,14 @@ const NavigationBar = () => {
         })
     }
 
+    const toggleMenu = () => {
+      setIsMenuOpen((prev) => !prev);
+    };
+
     return(
         <div className="navigation">
             <div className="left-part">
+                <div onClick={() => toggleMenu()}>{ isMenuOpen ? <i className="menu-icon" ><RxCross2 /></i> : <i className="menu-icon"><TiThMenuOutline /></i>}</div>
                 <h1>Game Shop</h1>
             </div>
             <div className="center-part">
@@ -73,6 +81,16 @@ const NavigationBar = () => {
                     {cart.cartData.length > 0 && <span className="cart-total">{cart.cartData.length}</span>}
                 </div>
             </div>
+
+                {/*  Mobile Menu (only when open) */}
+                <div className={`mobile-menu ${isMenuOpen ? "show" : "hidden"}`}>
+                  <NavLink to="/" className="navbar-link" onClick={toggleMenu}>Home</NavLink>
+                  <NavLink to="/category" className="navbar-link" onClick={toggleMenu}>Shop</NavLink>
+                  <NavLink to="/wishlist" className="navbar-link" onClick={toggleMenu}>Wishlist</NavLink>
+                  <NavLink to="/contact" className="navbar-link" onClick={toggleMenu}>Contact us</NavLink>
+                  <NavLink to="/cart" className="navbar-link" onClick={toggleMenu}>Cart</NavLink>
+                </div>
+            
         </div>
     )
 }

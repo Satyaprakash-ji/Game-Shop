@@ -1,25 +1,25 @@
-.product-container{
+.product-container {
     color: #fff;
     padding: 30px 120px;
 }
 
-.text{
+.text {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.text>h2{
+.text>h2 {
     text-transform: uppercase;
 }
 
-.horizontal-line{
+.horizontal-line {
     width: 40%;
     height: 1px;
     background-color: #454545;
 }
 
-.products-cards{
+.products-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;

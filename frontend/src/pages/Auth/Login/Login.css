@@ -1,66 +1,105 @@
-.login{
-    width: 100%;
-    min-height: calc(100vh - 13rem);
-    background-color: #1A1A1A;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.login {
+  width: 100%;
+  min-height: calc(100vh - 13rem);
+  background-color: #1A1A1A;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.login-title{
-    text-align: left;
-    margin: 15px 0;
+.login-title {
+  text-align: left;
+  margin: 15px 0;
 }
 
-.login input{
-    width: 450px;
-    height: 42px;
-    margin-bottom: 15px;
-    padding: 0 10px;
-    font-size: 1rem;
-    color: white;
-    background-color: transparent;
-    border: 2px solid #8D8D8D;
+.login input {
+  width: 450px;
+  height: 42px;
+  margin-bottom: 15px;
+  padding: 0 10px;
+  font-size: 1rem;
+  color: white;
+  background-color: transparent;
+  border: 2px solid #8D8D8D;
 
 }
 
-.login input:focus{
-    outline: none;
+.login input:focus {
+  outline: none;
 }
 
-.login-button{
-    margin: 0;
-    margin-bottom: 15px;
-    width: 450px;
-    height: 42px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #FF7200;
-    color: white;
-    cursor: pointer;
+.login-button {
+  margin: 0;
+  margin-bottom: 15px;
+  width: 450px;
+  height: 42px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #FF7200;
+  color: white;
+  cursor: pointer;
 }
 
-.login-button:hover{
-    background-color: #FF6100;
-    transition: ease-in .1s;
+.login-button:hover {
+  background-color: #FF6100;
+  transition: ease-in .1s;
 }
 
-.new-user{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 50px;
+.new-user {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
 }
 
 .register-link {
-    text-decoration: none;
-    color: royalblue;
+  text-decoration: none;
+  color: royalblue;
 
 }
 
-.register-link:hover{
-    text-decoration: underline;
-    transition: all ease 10s;
+.register-link:hover {
+  text-decoration: underline;
+  transition: all ease 10s;
+}
+
+
+
+/*  Tablet screens (≤1024px) */
+@media screen and (max-width: 1024px) {
+  .login>form {
+    width: 80%;
+  }
+
+  .login input,
+  .login-button {
+    width: 100%;
+  }
+
+  .login-title {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+}
+
+/*  Mobile screens (≤768px) */
+@media screen and (max-width: 768px) {
+  .login>form {
+    width: 90%;
+  }
+
+  .login input,
+  .login-button {
+    width: 100%;
+  }
+
+  .login-title {
+    text-align: center;
+  }
+
+  .new-user {
+    gap: 8px;
+  }
 }

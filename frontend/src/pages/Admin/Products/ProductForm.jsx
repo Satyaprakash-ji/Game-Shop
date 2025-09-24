@@ -63,7 +63,7 @@ const ProductForm = ({ product }) => {
   };
 
   return (
-    <main className="main-content">
+    <main className="products-main-content">
       <h2>{product ? "Edit Product" : "Create Product"}</h2>
     <form onSubmit={handleSubmit} className="product-form">
 

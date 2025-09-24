@@ -11,7 +11,7 @@ export const WishlistDispatchContext = createContext()
 export const WishlistProvider = ({children}) => {
 
   const [wishlist, wishlistDispatch] = useReducer(wishlistReducer, initialWishlist)
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const { loginData } = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()

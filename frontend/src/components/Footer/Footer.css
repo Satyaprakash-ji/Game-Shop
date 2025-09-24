@@ -1,40 +1,92 @@
 .footer {
-    width: 100%;
-    margin: 0;
-    position: relative;
-    bottom: 0;
-    background-color: #101010;
-    color: white;
-    text-align: center;
-    padding-top: 1px;
-    padding-bottom: 1rem;
-  }
+  width: 100%;
+  margin: 0;
+  position: relative;
+  bottom: 0;
+  background-color: #101010;
+  color: white;
+  text-align: center;
+  padding-top: 1px;
+  padding-bottom: 1rem;
+}
 
+.social-media {
+  max-width: 350px;
+  margin: auto;
+}
+
+.facebook,
+.twitter,
+.github,
+.linkedin {
+  text-decoration: none;
+  color: white;
+  margin: 0px 25px;
+  font-size: 25px;
+  transition: all .3s ease;
+}
+
+.facebook:hover,
+.twitter:hover,
+.github:hover,
+.linkedin:hover {
+  color: #8D8D8D;
+}
+
+.footer p {
+  color: white;
+  font: 0.9em abel;
+
+}
+
+.footer h6 {
+  margin: 10px 0px;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+
+/* Tablet screens (≤1024px) */
+@media screen and (max-width: 1024px) {
   .social-media {
-    max-width: 350px;
-    margin: auto;
+    max-width: 280px;
   }
 
-  .facebook, .twitter, .github, .linkedin{
-    text-decoration: none;
-    color: white;
-    margin: 0px 25px;
-    font-size: 25px;
-    transition: all .3s ease;
+  .facebook,
+  .twitter,
+  .github,
+  .linkedin {
+    margin: 0 15px;
+    font-size: 22px;
   }
 
-  .facebook:hover, .twitter:hover, .github:hover, .linkedin:hover{
-    color: #8D8D8D;
-  }
-  
   .footer p {
-    color: white;
-    font: 0.9em abel;
+    font-size: 0.85em;
+  }
+}
 
+/* Mobile screens (≤768px) */
+@media screen and (max-width: 768px) {
+  .social-media {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
   }
-  
+
+  .facebook,
+  .twitter,
+  .github,
+  .linkedin {
+    margin: 0 10px;
+    font-size: 20px;
+  }
+
   .footer h6 {
-    margin: 10px 0px;
-    text-transform: uppercase;
-    font-size: 1em;
+    font-size: 0.9em;
   }
+
+  .footer p {
+    font-size: 0.8em;
+  }
+}

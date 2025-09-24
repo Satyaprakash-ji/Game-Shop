@@ -39,7 +39,7 @@ const UserAddress = () => {
       </button>
       {loginData.user && loginData.user.userAddresses && loginData.user.userAddresses.length > 0 ? (
         loginData.user.userAddresses.map((address) => (
-        <div key={address.id}>
+        <div key={address._id}>
           <h3>
             {address.firstName} {address.lastName}
           </h3>

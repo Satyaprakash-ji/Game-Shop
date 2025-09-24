@@ -28,7 +28,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <main className="main-content">
+    <main className="dashboard-main-content">
       <h2 className="dashboard-title">Admin Dashboard</h2>
       <div className="dashboard-cards">
         <Card icon={<FaBox />} title="Total Products" value={totalProducts}/>

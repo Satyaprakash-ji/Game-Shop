@@ -1,6 +1,5 @@
-
 .admin-sidebar {
-  width: 260px;
+  width: 20%;
   background-color: #1F2121;
   color: #fff;
   padding: 40px 20px;
@@ -58,4 +57,52 @@
 .sidebar-link.active {
   background: #000;
   color: #fff;
+}
+
+
+/* Tablet screens (≤1024px) */
+@media screen and (max-width: 1024px) {
+  .admin-sidebar {
+    padding: 40px 15px;
+    width: 28%;
+  }
+
+  .sidebar-title {
+    font-size: 18px;
+  }
+
+  .sidebar-link {
+    padding: 8px 6px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile screens (≤768px) */
+@media screen and (max-width: 768px) {
+  .admin-sidebar {
+    position: fixed;
+    left: -100%;
+    top: 6rem;
+    width: 220px;
+    padding: 20px 15px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .admin-sidebar.open {
+    left: 0%;
+  }
+
+  .admin-sidebar.active {
+    left: 0;
+  }
+
+  .sidebar-title {
+    font-size: 16px;
+  }
+
+  .sidebar-link {
+    font-size: 13px;
+    padding: 6px 5px;
+  }
 }

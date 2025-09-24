@@ -1,90 +1,89 @@
 .user-addresses-page {
-    padding: 20px;
-    max-width: 1200px;
-    background-color: #1A1A1A;
-    color: white;
-    margin: 10px auto;
-  }
-  
-  .user-addresses-page h2 {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .user-addresses-page .go-back-btn {
-    color: white;
-    padding: 5px;
-    border: 1px solid #8D8D8D;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    background-color: #FF7200;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-  }
-  
-  .user-addresses-page .go-back-btn:hover {
-    background-color: #FF6100;
-    transition: ease-in .1s;
-  }
-  
-  .user-addresses-page .address-form {
-    margin-bottom: 20px;
-  }
-  
-  .user-addresses-page .form-label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .user-addresses-page .form-input {
-    padding: 10px;
-    border: 2px solid #8D8D8D;
-    border-radius: 2px;
-    width: 100%;
-    background-color: transparent;
-    color: white;
-  }
-  
-  .user-addresses-page .form-button {
-    padding: 10px;
-    background-color: #FF7200;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .user-addresses-page .form-button:hover {
-    background-color: #FF6100;
-    transition: ease-in .1s;
-  }
-  
-  .user-addresses-page button {
-    margin-top: 10px;
-  }
-  
-  .user-addresses-page hr {
-    margin: 20px 0;
-  }
-  
-  .user-addresses-page .edit-button,
-  .user-addresses-page .cancel-button,
-  .user-addresses-page .delete-button {
-    padding: 10px;
-    background-color: #FF7200;
-    border: none;
-    border-radius: 5px;
-    color: var(--color-2);
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  .user-addresses-page .edit-button:hover,
-  .user-addresses-page .cancel-button:hover,
-  .user-addresses-page .delete-button:hover {
-    background-color: #FF6100;
-    transition: ease-in .1s;
-  }
-  
+  padding: 20px;
+  max-width: 1200px;
+  background-color: #1A1A1A;
+  color: white;
+  margin: 10px auto;
+}
+
+.user-addresses-page h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.user-addresses-page .go-back-btn {
+  color: white;
+  padding: 5px;
+  border: 1px solid #8D8D8D;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #FF7200;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.user-addresses-page .go-back-btn:hover {
+  background-color: #FF6100;
+  transition: ease-in .1s;
+}
+
+.user-addresses-page .address-form {
+  margin-bottom: 20px;
+}
+
+.user-addresses-page .form-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.user-addresses-page .form-input {
+  padding: 10px;
+  border: 2px solid #8D8D8D;
+  border-radius: 2px;
+  width: 100%;
+  background-color: transparent;
+  color: white;
+}
+
+.user-addresses-page .form-button {
+  padding: 10px;
+  background-color: #FF7200;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.user-addresses-page .form-button:hover {
+  background-color: #FF6100;
+  transition: ease-in .1s;
+}
+
+.user-addresses-page button {
+  margin-top: 10px;
+}
+
+.user-addresses-page hr {
+  margin: 20px 0;
+}
+
+.user-addresses-page .edit-button,
+.user-addresses-page .cancel-button,
+.user-addresses-page .delete-button {
+  padding: 10px;
+  background-color: #FF7200;
+  border: none;
+  border-radius: 5px;
+  color: var(--color-2);
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.user-addresses-page .edit-button:hover,
+.user-addresses-page .cancel-button:hover,
+.user-addresses-page .delete-button:hover {
+  background-color: #FF6100;
+  transition: ease-in .1s;
+}

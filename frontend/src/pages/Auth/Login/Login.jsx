@@ -42,7 +42,7 @@ const Login = () => {
         <div className="login">
             <h1 className="login-title">Login</h1>
             <form onSubmit={loginHandler}>
-                <div>
+                <div className="input-field">
                     <input type="email" id="email" placeholder="Email" name="email" value={logInFormData.email} onChange={handleLoginCreds} />
                 </div>
                 <div className="password-field">

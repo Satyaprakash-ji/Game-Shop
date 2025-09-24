@@ -1,76 +1,119 @@
-.register{
-    width: 100%;
-    min-height: calc(100vh - 13rem);
-    background-color: #1A1A1A;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.register {
+  width: 100%;
+  min-height: calc(100vh - 13rem);
+  background-color: #1A1A1A;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.register-title{
-    text-align: left;
-    margin: 15px 0;
+.register-title {
+  text-align: left;
+  margin: 15px 0;
 }
 
-.register input{
-    width: 450px;
-    height: 42px;
-    margin-bottom: 15px;
-    padding: 0 10px;
-    font-size: 1rem;
-    color: white;
-    background-color: transparent;
-    border: 2px solid #8D8D8D;
+.register input {
+  width: 450px;
+  height: 42px;
+  margin-bottom: 15px;
+  padding: 0 10px;
+  font-size: 1rem;
+  color: white;
+  background-color: transparent;
+  border: 2px solid #8D8D8D;
 
 }
 
-.register input:focus{
-    outline: none;
+.register input:focus {
+  outline: none;
 }
 
-.password-field, .confirem-password-field{
-    position: relative;
+.password-field,
+.confirem-password-field {
+  position: relative;
 }
 
-.show-password-icon{
-    position: absolute;
-    right: 5px;
-    top: 22%;
-    font-size: 18px;
-    color: #8D8D8D;
-    cursor: pointer;
+.show-password-icon {
+  position: absolute;
+  right: 5px;
+  top: 22%;
+  font-size: 18px;
+  color: #8D8D8D;
+  cursor: pointer;
 }
 
-.register-button{
-    margin: 0;
-    width: 450px;
-    height: 42px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #FF7200;
-    color: white;
-    cursor: pointer;
+.register-button {
+  margin: 0;
+  width: 450px;
+  height: 42px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #FF7200;
+  color: white;
+  cursor: pointer;
 }
 
-.register-button:hover{
-    background-color: #FF6100;
-    transition: ease-in .1s;
+.register-button:hover {
+  background-color: #FF6100;
+  transition: ease-in .1s;
 }
 
-.existing-user{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 50px;
+.existing-user {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
 }
 
 .login-link {
-    text-decoration: none;
-    color: royalblue;
+  text-decoration: none;
+  color: royalblue;
 }
 
-.login-link:hover{
-    text-decoration: underline;
+.login-link:hover {
+  text-decoration: underline;
+}
+
+
+
+/*  Tablet screens (≤1024px) */
+@media screen and (max-width: 1024px) {
+  .register>form {
+    width: 80%;
+  }
+
+  .register input,
+  .register-button {
+    width: 100%;
+  }
+
+  .register-title {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+}
+
+/*  Mobile screens (≤768px) */
+@media screen and (max-width: 768px) {
+  .register>form {
+    width: 90%;
+  }
+
+  .register input,
+  .register-button {
+    width: 100%;
+  }
+
+  .register-title {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .existing-user {
+    align-items: center;
+    margin: 24px 0 48px 0;
+    gap: 8px;
+  }
 }

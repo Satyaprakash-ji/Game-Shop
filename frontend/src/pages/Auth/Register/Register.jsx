@@ -25,9 +25,7 @@ const Register = () => {
 
     const handleSignUpCreds = (e) => {
         const { name, value } = e.target;
-        // if(value !== "") {
             setSignUpFormData((prev) => ({...prev, [name]: value}))
-        // }
     };
 
     const signUpHandler = async (e) => {
@@ -50,34 +48,7 @@ const Register = () => {
           return;
         }
 
-            // const { firstName, lastName, email, password, confirmPassword } =
-            //   signUpFormData;
-
-            // if (
-            //   !firstName ||
-            //   !lastName ||
-            //   !email ||
-            //   !password ||
-            //   !confirmPassword
-            // ) {
-            //   setFormInputError("Please fill in all required fields.");
-            //   return;
-            // }
-
-            // if (password !== confirmPassword) {
-            //   setFormInputError("Passwords do not match.");
-            //   return;
-            // }
-
-    // setFormInputError(""); // clear any old error
-
         await signUp(
-            // {
-    //    firstName: firstName.trim(),
-    //   lastName: lastName.trim(),
-    //   email: email.trim(),
-    //   password: password.trim(),
-    //   confirmPassword: confirmPassword.trim(),}
             signUpFormData.firstName.trim(),
             signUpFormData.lastName.trim(),
             signUpFormData.email.trim(),

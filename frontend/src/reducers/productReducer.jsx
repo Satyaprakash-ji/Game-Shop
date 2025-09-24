@@ -26,6 +26,12 @@ export const productReducer = (state, { type, payload }) => {
     case "SELECTED_CATEGORY_DATA":
       return { ...state, categories: { ...state.categories, selectedCategoryData: payload } };
 
+    case "SET_PRODUCT_PAGE_NUMBER":
+      return { ...state, paginationPage: payload }
+
+    case "RESET_PRODUCT_PAGE_NUMBER":
+      return { ...state, paginationPage: 1 }
+
     default:
       return state;
   }

@@ -1,4 +1,5 @@
 .products-listings-container {
+  min-height: calc(100vh - 13rem);
   padding: 60px 140px;
   color: white;
   background-color: #1a1a1a;
@@ -6,7 +7,17 @@
   justify-content: space-between;
 }
 
-.filter-container{
+.listings-title {
+  text-align: center;
+  color: #fff;
+  padding-top: 1.2rem;
+}
+
+.filter-button {
+  display: none;
+}
+
+.filter-container {
   width: 20%;
 }
 
@@ -71,4 +82,77 @@
 
 .genre-checkbox-filter input[type="checkbox"] {
   margin-right: 0.25rem;
+}
+
+
+/* Tablet screens (≤1024px) */
+@media screen and (max-width: 1024px) {
+  .products-listings-container {
+    padding: 40px 10px;
+    gap: 1.5rem;
+  }
+
+  .filter-container {
+    width: 25%;
+  }
+
+  .products-container {
+    width: 75%;
+    justify-content: space-between;
+    gap: 24px;
+    background: #000;
+  }
+
+  .internal-product-card {
+    width: 47%;
+  }
+
+  .filter-box {
+    height: auto;
+    position: relative;
+    top: unset;
+  }
+}
+
+/* Mobile screens (≤768px) */
+@media screen and (max-width: 768px) {
+  .filter-button {
+    display: block;
+    margin: 0 auto;
+    padding: 8px 8px;
+    border: none;
+    border-radius: 2px;
+    font-size: 14px;
+    background: #333;
+    color: #fff;
+  }
+
+  .products-listings-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .filter-container {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .hide-filters {
+    display: none;
+  }
+
+  .display-filters {
+    display: block;
+  }
+
+  .products-container {
+    width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .filter-box {
+    height: auto;
+    padding: 10px;
+  }
 }
